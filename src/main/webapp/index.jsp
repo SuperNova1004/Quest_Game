@@ -1,13 +1,23 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
+
 <html>
+
 <head>
-    <title>JSP - Hello World</title>
+
+    <title>Текстовый квест</title>
+
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
+
+<h1>Добро пожаловать в текстовый квест!</h1>
+<p>Готовы начать свое приключение?</p>
+
+<form action="game.jsp" method="post">
+    <label for="playerName">Введите ваше имя:</label>
+    <input type="text" id="playerName" name="playerName" required>
+    <button type="submit">Начать игру</button>
+
+</form>
 </body>
 </html>
