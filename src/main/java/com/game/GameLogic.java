@@ -31,10 +31,10 @@ public class GameLogic {
 
         switch (currentStep) {
             case 1:
-                if (answer.equalsIgnoreCase("да")) {
+                if (answer.equalsIgnoreCase("Да")) {
 
                     currentStep++; // Переход на следующий шаг
-                } else if (answer.equalsIgnoreCase("нет")) {
+                } else if (answer.equalsIgnoreCase("Нет")) {
 
                     isGameOver = true;
                     gameResult = "Ты плохой зять"; // Поражение
