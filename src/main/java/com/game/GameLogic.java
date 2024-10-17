@@ -5,45 +5,54 @@ public class GameLogic {
     private int currentStep;
     private boolean isGameOver;
     private Player player;
-    private String gameResult; // Новый атрибут для хранения результата игры
 
     public GameLogic(Player player) {
+
         this.player = player;
         this.currentStep = 1;
         this.isGameOver = false;
-        this.gameResult = "";
     }
 
     public String getCurrentQuestion() {
+
         switch (currentStep) {
             case 1:
-                return "У твоей тёщи день рождения! Пойдёшь выбирать подарок? (да/нет)";
+                return "У тёщи сегодня день рождения! Пойдёшь покупать подарки?";
             case 2:
-                // Дальнейшая логика будет добавлена
-                return "Продолжение квеста...";
+                return "Пойдёшь выбирать вместе с женой?";
+            case 3:
+                return "Вы пришли в магазин. Предложить выбрать подарок подешевле?";
             default:
-                return "Ты завершил своё приключение!";
+                return "Вы завершили игру!";
         }
     }
 
     public void processAnswer(String answer) {
+
         if (isGameOver) return;
 
         switch (currentStep) {
+
             case 1:
-                if (answer.equalsIgnoreCase("Да")) {
-
-                    currentStep++; // Переход на следующий шаг
-                } else if (answer.equalsIgnoreCase("Нет")) {
-
+                if (answer.equals("да")) {
+                    currentStep++;
+                } else {
                     isGameOver = true;
-                    gameResult = "Ты плохой зять"; // Поражение
                 }
                 break;
-
-            // Дополнительная логика для следующих шагов
-            default:
-                isGameOver = true;
+            case 2:
+                if (answer.equals("Пойти вместе")) {
+                    currentStep++;
+                } else {
+                    isGameOver = true;
+                }
+                break;
+            case 3:
+                if (answer.equals("Нет! Это твоя мама и она заслуживает самого лучшего")) {
+                    isGameOver = true; // Победа
+                } else {
+                    isGameOver = true;
+                }
                 break;
         }
     }
@@ -53,26 +62,17 @@ public class GameLogic {
         return isGameOver;
     }
 
-    public String getGameResult() {
-
-        return gameResult;
-    }
-
     public Player getPlayer() {
 
         return player;
-    }
-
-    public int getCurrentStep() {
-
-        return currentStep;
     }
 
     public void resetGame() {
 
         currentStep = 1;
         isGameOver = false;
-        gameResult = "";
     }
 }
+
+
 
