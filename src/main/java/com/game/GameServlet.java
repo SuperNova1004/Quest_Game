@@ -12,7 +12,6 @@ import java.io.IOException;
 public class GameServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         HttpSession session = request.getSession();
         GameLogic gameLogic = (GameLogic) session.getAttribute("gameLogic");
 
@@ -28,9 +27,10 @@ public class GameServlet extends HttpServlet {
             gameLogic.processAnswer(answer);
         }
 
+        // Проверяем, закончилась ли игра
         request.setAttribute("question", gameLogic.getCurrentQuestion());
         request.setAttribute("isGameOver", gameLogic.isGameOver());
+
         request.getRequestDispatcher("/game.jsp").forward(request, response);
     }
 }
-

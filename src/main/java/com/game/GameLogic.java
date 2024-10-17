@@ -14,6 +14,9 @@ public class GameLogic {
     }
 
     public String getCurrentQuestion() {
+        if (isGameOver) {
+            return "Игра завершена!";
+        }
 
         switch (currentStep) {
             case 1:
@@ -28,30 +31,29 @@ public class GameLogic {
     }
 
     public void processAnswer(String answer) {
-
         if (isGameOver) return;
 
         switch (currentStep) {
-
             case 1:
                 if (answer.equals("да")) {
                     currentStep++;
                 } else {
-                    isGameOver = true;
+                    isGameOver = true; // Завершение игры при выборе "нет"
                 }
                 break;
             case 2:
                 if (answer.equals("Пойти вместе")) {
                     currentStep++;
                 } else {
-                    isGameOver = true;
+                    isGameOver = true; // Завершение игры при отказе идти вместе
                 }
                 break;
             case 3:
                 if (answer.equals("Нет! Это твоя мама и она заслуживает самого лучшего")) {
-                    isGameOver = true; // Победа
-                } else {
+                    // Победа, игра завершена
                     isGameOver = true;
+                } else {
+                    isGameOver = true; // Завершение игры при выборе "да" для экономии
                 }
                 break;
         }
@@ -73,6 +75,5 @@ public class GameLogic {
         isGameOver = false;
     }
 }
-
 
 

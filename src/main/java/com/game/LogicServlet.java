@@ -11,6 +11,7 @@ import java.io.IOException;
 public class LogicServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         // Логика для обработки дополнительных запросов, если необходимо
     }
 }
