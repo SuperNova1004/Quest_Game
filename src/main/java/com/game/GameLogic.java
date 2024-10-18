@@ -31,31 +31,35 @@ public class GameLogic {
     }
 
     public void processAnswer(String answer) {
-        if (isGameOver) return;
+        if (isGameOver) return;  // Игра уже завершена
 
         switch (currentStep) {
             case 1:
-                if (answer.equals("да")) {
-                    currentStep++;
+                if (answer.equalsIgnoreCase("да")) {
+                    currentStep++;  // Переход к следующему шагу
                 } else {
-                    isGameOver = true; // Завершение игры при выборе "нет"
+                    isGameOver = true;  // Неправильный ответ -> конец игры
                 }
                 break;
+
             case 2:
                 if (answer.equals("Пойти вместе")) {
-                    currentStep++;
+                    currentStep++;  // Переход к следующему шагу
                 } else {
-                    isGameOver = true; // Завершение игры при отказе идти вместе
+                    isGameOver = true;  // Неправильный ответ -> конец игры
                 }
                 break;
+
             case 3:
                 if (answer.equals("Нет! Это твоя мама и она заслуживает самого лучшего")) {
-                    // Победа, игра завершена
-                    isGameOver = true;
+                    isGameOver = true;  // Это правильный ответ -> победа
                 } else {
-                    isGameOver = true; // Завершение игры при выборе "да" для экономии
+                    isGameOver = true;  // Неправильный ответ -> конец игры
                 }
                 break;
+
+            default:
+                isGameOver = true;  // Если шагов больше нет, игра завершена
         }
     }
 

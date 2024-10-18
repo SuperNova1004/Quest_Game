@@ -12,8 +12,17 @@ import java.io.IOException;
 public class GameServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         HttpSession session = request.getSession();
         GameLogic gameLogic = (GameLogic) session.getAttribute("gameLogic");
+
+        // Сброс игры при нажатии кнопки "Начать заново"
+        String reset = request.getParameter("reset");
+        if (reset != null) {
+            Player player = (Player) session.getAttribute("player");
+            gameLogic = new GameLogic(player);
+            session.setAttribute("gameLogic", gameLogic);
+        }
 
         if (gameLogic == null) {
             String playerName = request.getParameter("playerName");
@@ -22,15 +31,15 @@ public class GameServlet extends HttpServlet {
             session.setAttribute("gameLogic", gameLogic);
         }
 
+        // Обработка ответа
         String answer = request.getParameter("answer");
         if (answer != null) {
             gameLogic.processAnswer(answer);
         }
 
-        // Проверяем, закончилась ли игра
+        // Передача параметров на JSP
         request.setAttribute("question", gameLogic.getCurrentQuestion());
         request.setAttribute("isGameOver", gameLogic.isGameOver());
-
         request.getRequestDispatcher("/game.jsp").forward(request, response);
     }
 }
