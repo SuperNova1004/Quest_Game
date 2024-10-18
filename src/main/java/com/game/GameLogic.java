@@ -31,37 +31,46 @@ public class GameLogic {
     }
 
     public void processAnswer(String answer) {
-        if (isGameOver) return;  // Игра уже завершена
+        if (isGameOver) return;
+
+        System.out.println("Current Step: " + currentStep);
+        System.out.println("Answer received: " + answer);
 
         switch (currentStep) {
             case 1:
-                if (answer.equalsIgnoreCase("да")) {
-                    currentStep++;  // Переход к следующему шагу
+                if (answer.equals("да")) {
+                    currentStep++;
+                    System.out.println("Moving to step 2");
                 } else {
-                    isGameOver = true;  // Неправильный ответ -> конец игры
+                    isGameOver = true;
+                    System.out.println("Game over: выбрали нет на шаге 1");
                 }
                 break;
-
             case 2:
                 if (answer.equals("Пойти вместе")) {
-                    currentStep++;  // Переход к следующему шагу
+                    currentStep++;
+                    System.out.println("Moving to step 3");
                 } else {
-                    isGameOver = true;  // Неправильный ответ -> конец игры
+                    isGameOver = true;
+                    System.out.println("Game over: выбрали отказ на шаге 2");
                 }
                 break;
-
             case 3:
                 if (answer.equals("Нет! Это твоя мама и она заслуживает самого лучшего")) {
-                    isGameOver = true;  // Это правильный ответ -> победа
+                    isGameOver = true;
+                    System.out.println("Game won on step 3");
                 } else {
-                    isGameOver = true;  // Неправильный ответ -> конец игры
+                    isGameOver = true;
+                    System.out.println("Game over: выбрали экономию на шаге 3");
                 }
                 break;
-
             default:
-                isGameOver = true;  // Если шагов больше нет, игра завершена
+                isGameOver = true;
+                System.out.println("Default case triggered");
+                break;
         }
     }
+
 
     public boolean isGameOver() {
 
@@ -75,7 +84,7 @@ public class GameLogic {
 
     public void resetGame() {
 
-        currentStep = 1;
+        currentStep = 3;
         isGameOver = false;
     }
 }

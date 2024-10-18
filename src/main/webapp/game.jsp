@@ -1,5 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +11,9 @@
 <c:if test="${isGameOver}">
     <p>Игра завершена!</p>
     <form action="game" method="post">
-        <button type="submit" name="reset">Начать заново</button>
+        <button type="submit" name="reset" value="true">Начать заново</button>
     </form>
 </c:if>
-<c:if test="${!isGameOver}">
     <form action="game" method="post">
         <c:choose>
             <c:when test="${question == 'У тёщи сегодня день рождения! Пойдёшь покупать подарки?'}">
@@ -30,7 +30,6 @@
             </c:when>
         </c:choose>
     </form>
-</c:if>
 </body>
 </html>
 
