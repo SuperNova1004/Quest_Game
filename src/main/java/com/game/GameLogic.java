@@ -4,20 +4,17 @@ public class GameLogic {
 
     private int currentStep;
     private boolean isGameOver;
+    private String message;
     private Player player;
 
     public GameLogic(Player player) {
-
         this.player = player;
         this.currentStep = 1;
         this.isGameOver = false;
+        this.message = "";
     }
 
     public String getCurrentQuestion() {
-        if (isGameOver) {
-            return "Игра завершена!";
-        }
-
         switch (currentStep) {
             case 1:
                 return "У тёщи сегодня день рождения! Пойдёшь покупать подарки?";
@@ -33,60 +30,53 @@ public class GameLogic {
     public void processAnswer(String answer) {
         if (isGameOver) return;
 
-        System.out.println("Current Step: " + currentStep);
-        System.out.println("Answer received: " + answer);
-
         switch (currentStep) {
             case 1:
                 if (answer.equals("да")) {
                     currentStep++;
-                    System.out.println("Moving to step 2");
                 } else {
+                    message = "Ты плохой зять";
                     isGameOver = true;
-                    System.out.println("Game over: выбрали нет на шаге 1");
                 }
                 break;
             case 2:
                 if (answer.equals("Пойти вместе")) {
                     currentStep++;
-                    System.out.println("Moving to step 3");
                 } else {
+                    message = "Ты просто не любишь свою жену!";
                     isGameOver = true;
-                    System.out.println("Game over: выбрали отказ на шаге 2");
                 }
                 break;
             case 3:
                 if (answer.equals("Нет! Это твоя мама и она заслуживает самого лучшего")) {
+                    message = "Вы купили хороший подарок, тёща и жена были очень довольны. Вы, " + player.getName() + ", хороший муж и зять!";
                     isGameOver = true;
-                    System.out.println("Game won on step 3");
                 } else {
+                    message = "Ты не ценишь свою тёщу и оскорбил жену!";
                     isGameOver = true;
-                    System.out.println("Game over: выбрали экономию на шаге 3");
                 }
-                break;
-            default:
-                isGameOver = true;
-                System.out.println("Default case triggered");
                 break;
         }
     }
 
-
     public boolean isGameOver() {
-
         return isGameOver;
     }
 
     public Player getPlayer() {
-
         return player;
     }
 
-    public void resetGame() {
+    public String getMessage() {
+        return message;
+    }
 
-        currentStep = 3;
+    public void resetGame() {
+        currentStep = 1;
         isGameOver = false;
+        message = "";
     }
 }
+
 
 

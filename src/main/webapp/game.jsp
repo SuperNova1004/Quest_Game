@@ -11,7 +11,8 @@
 <c:if test="${isGameOver}">
     <p>Игра завершена!</p>
     <form action="game" method="post">
-        <button type="submit" name="reset" value="true">Начать заново</button>
+        <input type="hidden" name="reset" value="true"/>
+        <button type="submit">Начать заново</button>
     </form>
 </c:if>
     <form action="game" method="post">
