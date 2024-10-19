@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,12 +8,13 @@
 <body>
 <h1>${question}</h1>
 <c:if test="${isGameOver}">
+    <p>${gameLogic.message}</p>
     <p>Игра завершена!</p>
     <form action="game" method="post">
-        <input type="hidden" name="reset" value="true"/>
-        <button type="submit">Начать заново</button>
+        <button type="submit" name="reset">Начать заново</button>
     </form>
 </c:if>
+<c:if test="${!isGameOver}">
     <form action="game" method="post">
         <c:choose>
             <c:when test="${question == 'У тёщи сегодня день рождения! Пойдёшь покупать подарки?'}">
@@ -31,7 +31,9 @@
             </c:when>
         </c:choose>
     </form>
+</c:if>
 </body>
 </html>
+
 
 
