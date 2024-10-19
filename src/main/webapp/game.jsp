@@ -4,6 +4,21 @@
 <html>
 <head>
     <title>Text Adventure Game</title>
+    <style>
+        body {
+            background-color: lightblue; /* Голубой фон */
+        }
+        button {
+            background-color: #d8bfd8; /* Светло-фиолетовый цвет */
+            color: black; /* Чёрный цвет текста */
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        </style>
 </head>
 <body>
 <h1>${question}</h1>

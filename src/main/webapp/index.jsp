@@ -6,10 +6,16 @@
     <style>
         body {
             background-color: lightblue; /* Голубой фон */
+            text-align: center; /* Центрирование текста */
+        }
+        .container {
+            margin: auto; /* Автоматические отступы */
+            width: 50%; /* Ширина контейнера */
+            text-align: center; /* Центрирование текста внутри контейнера */
         }
         button {
             background-color: #d8bfd8; /* Светло-фиолетовый цвет */
-            color: white;
+            color: black; /* Чёрный цвет текста */
             border: none;
             padding: 10px 20px;
             text-align: center;
@@ -30,14 +36,17 @@
     </style>
 </head>
 <body>
-<h1>Добро пожаловать в текстовый квест!</h1>
-<form action="game" method="post">
-    <label for="playerName">Введите ваше имя:</label><br>
-    <input type="text" id="playerName" name="playerName" required><br><br>
-    <button type="submit">Начать игру</button>
-</form>
+<div class="container">
+    <h1>Добро пожаловать в текстовый квест!</h1>
+    <form action="game" method="post">
+        <label for="playerName">Введите ваше имя:</label><br>
+        <input type="text" id="playerName" name="playerName" required><br><br>
+        <button type="submit">Начать игру</button>
+    </form>
+</div>
 </body>
 </html>
+
 
 
 
