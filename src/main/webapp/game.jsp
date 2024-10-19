@@ -7,6 +7,12 @@
     <style>
         body {
             background-color: lightblue; /* Голубой фон */
+            text-align: center; /* Центрирование текста */
+        }
+        .container {
+            margin: auto; /* Автоматические отступы */
+            width: 50%; /* Ширина контейнера */
+            text-align: center; /* Центрирование текста внутри контейнера */
         }
         button {
             background-color: #d8bfd8; /* Светло-фиолетовый цвет */
@@ -18,6 +24,7 @@
             margin: 10px;
             cursor: pointer;
             border-radius: 5px;
+        }
         </style>
 </head>
 <body>
